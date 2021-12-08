@@ -4,11 +4,11 @@ import { SessionProvider } from "next-auth/react";
 import Navbar from "../components/Navbar"
 
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function App({ Component, pageProps }) {
 
   return (
     <Layout>
-      <SessionProvider session={session}>
+      <SessionProvider session={pageProps.session}>
         <Navbar />
         <Component {...pageProps} />
       </SessionProvider>
@@ -16,4 +16,4 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   );
 }
 
-export default MyApp;
+export default App;
