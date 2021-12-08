@@ -21,7 +21,7 @@ const dashboard = () => {
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold">
-          Welcome to <a className="text-blue-500">Dashboard Page!</a>
+          Welcome to <a className="text-blue-500">Dashboard Page !</a>
         </h1>
       </main>
     </div>
