@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import { useSession } from "next-auth/react";
-import Router from "next/router";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const design = () => {
-  const { data: session } = useSession();
+
+  const { user } = useUser()
 
   useEffect(() => {
-    if (!session) {
-      Router.push("/");
+    if (!user) {
+      Router.push("/")
     }
-  });
-
+  })
+  
   return (
     <div className="flex items-center justify-center min-h-screen py-2">
       <Head>

@@ -1,18 +1,13 @@
 import "tailwindcss/tailwind.css";
-import Layout from "../components/Layout";
-import { SessionProvider } from "next-auth/react";
-import Navbar from "../components/Navbar"
-
+import Navbar from "../components/Navbar";
+import { UserProvider } from "@auth0/nextjs-auth0";
 
 function App({ Component, pageProps }) {
-
   return (
-    <Layout>
-      <SessionProvider session={pageProps.session}>
+      <UserProvider>
         <Navbar />
         <Component {...pageProps} />
-      </SessionProvider>
-    </Layout>
+      </UserProvider>
   );
 }
 
