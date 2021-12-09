@@ -16,22 +16,7 @@ export default NextAuth({
       }
     })
   ],
-  jwt: {
-    encryption: true,
-  },
-  secret: process.env.secret,
-  callbacks: {
-    async jwt({ token, account }) {
-      if (account?.access_token) {
-        token.access_token = account.access_token
-      }
-      return token // Do different verification for other providers that don't have `email_verified`
-    },
-    redirect: async (url, _baseUrl) => {
-      if (url === '/dashboard') {
-        return Promise.resolve("/");
-      }
-      return Promise.resolve("/");
-    }
-  }
+  
+  secret: process.env.SECRET,
+  
 })
