@@ -1,13 +1,16 @@
 import "tailwindcss/tailwind.css";
 import Navbar from "../components/Navbar";
-import { UserProvider } from "@auth0/nextjs-auth0";
+import { StateProvider } from "../components/stateProvider";
+import { initialState, reducer } from "../components/reducer";
 
 function App({ Component, pageProps }) {
   return (
-      <UserProvider>
+    <>
+      <StateProvider initialState={initialState} reducer={reducer}>
         <Navbar />
         <Component {...pageProps} />
-      </UserProvider>
+      </StateProvider>
+    </>
   );
 }
 

@@ -1,16 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Head from "next/head";
-import { useUser } from "@auth0/nextjs-auth0";
+
 
 const design = () => {
 
-  const { user } = useUser()
 
-  useEffect(() => {
-    if (!user) {
-      Router.push("/")
-    }
-  })
   
   return (
     <div className="flex items-center justify-center min-h-screen py-2">
