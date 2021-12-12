@@ -1,6 +1,8 @@
-import jsCookie from "js-cookie";
+
 import "tailwindcss/tailwind.css";
 import Navbar from "../components/Navbar";
+import "../styles/global.css";
+
 
 function App({ Component, pageProps }) {
   return (
