@@ -6,11 +6,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import Router from "next/router";
-import {
-  signInWithRedirect,
-  GoogleAuthProvider,
-  getRedirectResult,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import jsCookie from "js-cookie";
 
 const register = () => {
   // google Sign in
@@ -28,8 +25,17 @@ const register = () => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      const user = await signInWithEmailAndPassword(auth, email, password);
-      Router.push("/");
+      await signInWithEmailAndPassword(auth, email, password).then((result) => {
+
+        const user = result.user
+        const token = user.getIdToken()
+        if (token || token !== "") {
+          jsCookie.set("user", {name:user.displayName , token : token});
+        }
+        Router.push("/");
+      });
+
+      // setting token into cookies
     } catch (error) {
       window.alert(error);
       Router.push("/register");
@@ -39,22 +45,24 @@ const register = () => {
   // signup With google
   const signUpGoogle = async (e) => {
     e.preventDefault();
-    await signInWithRedirect(auth, provider);
-    await getRedirectResult(auth)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access Google APIs.
+    try {
+      await signInWithPopup(auth, provider).then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
-        // // The signed-in user info.
-        // const user = result.user;
+        const token = credential.accessToken
+        const user = result.user
+        // setting token into cookies
+        if (token || token !== "") {
+          jsCookie.set("user", { name:user.displayName , token:token });
+        }
         Router.push("/");
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorMessage = error.message;
-        window.alert(errorMessage);
       });
+    } catch (error) {
+      window.alert(error);
+      Router.push("/register");
+    }
   };
+
+
   return (
     <div className="flex items-center justify-center min-h-screen py-2">
       <Head>

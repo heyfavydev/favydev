@@ -3,26 +3,26 @@ import Head from "next/head";
 import { auth } from "../firebase/clientApp";
 import Router from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useStateValue } from "../components/stateProvider";
+import jsCookie from "js-cookie";
 
 const login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [{ user }, dispatch] = useStateValue();
 
   const signin = async (e) => {
     e.preventDefault();
     try {
-      const userSignin = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      dispatch({ type: "SET_USER", user: userSignin });
+      await signInWithEmailAndPassword(auth, email, password).then((result) => {
+        const user = result.user;
+        const token = user.getIdToken();
+        jsCookie.set("user", { name: user.displayName, token: token });
+      });
       Router.push("/");
+
+      
     } catch (error) {
       window.alert(error);
-      Router.push("/register");
+      Router.push("/login");
     }
   };
 

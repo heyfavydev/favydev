@@ -1,11 +1,16 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Head from "next/head";
-
+import jsCookie from "js-cookie";
+import Router from "next/router";
 
 const design = () => {
 
 
-  
+  useEffect(() => {
+    if (jsCookie.get('token') === "" ) {
+      Router.push("/")
+    }
+  })
   return (
     <div className="flex items-center justify-center min-h-screen py-2">
       <Head>
