@@ -71,6 +71,7 @@ const register = () => {
       </Head>
       <main>
         <div className="w-96 h-auto shadow-lg rounded-xl p-8 bg-blue-100">
+        <h2 className="text-center text-3xl text-black font-bold mb-2">Sign Up to Favy</h2>
           <form>
             <div className="flex flex-col items-center justify-center">
               <input

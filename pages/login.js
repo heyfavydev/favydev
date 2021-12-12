@@ -19,7 +19,7 @@ const login = () => {
       });
       Router.push("/");
 
-      
+
     } catch (error) {
       window.alert(error);
       Router.push("/login");
@@ -34,7 +34,7 @@ const login = () => {
       </Head>
       <main>
         <div className="w-96 h-auto py-2">
-          { <h2 className="text-center text-3xl text-foreground font-bold mb-14">Continue to Favy</h2>}
+          {<h2 className="text-center text-3xl text-foreground font-bold mb-14">Continue to Favy</h2>}
           <form>
             <div className="flex flex-col items-center justify-center">
               <input
@@ -61,7 +61,7 @@ const login = () => {
                 className="border-black-100 leading-none bg-[#1EA1F1] h-9 mt-2 rounded-lg text-xl text-white w-96 font-medium"
                 onClick={signin}
               >
-                Sign in
+               Login
               </button>
             </div>
           </form>
