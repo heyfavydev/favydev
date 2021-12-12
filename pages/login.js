@@ -27,14 +27,14 @@ const login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen py-2">
+    <div className="flex items-start justify-center min-h-screen py-2 mt-48">
       <Head>
-        <title>Favlent - Login</title>
+        <title>Login</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="w-96 h-auto shadow-lg rounded-xl p-8 bg-blue-100 ">
-          {/* <h2 className="text-center text-xl text">Sign In</h2> */}
+        <div className="w-96 h-auto py-2">
+          { <h2 className="text-center text-3xl text-foreground font-bold mb-14">Continue to Favy</h2>}
           <form>
             <div className="flex flex-col items-center justify-center">
               <input
@@ -44,8 +44,8 @@ const login = () => {
                 onChange={(e) => {
                   setemail(e.target.value);
                 }}
-                className="px-3 py-2 rounded-sm w-72 border-black-2 my-4 shadow-sm outline-none"
-                placeholder="Enter your email"
+                className="px-3 py-2 rounded-lg h-9 w-96 mb-2 outline-black focus:ring-1 ring-success2 bg-background border border-accent2 font-normal text-foreground"
+                placeholder="Email"
               />
               <input
                 type="password"
@@ -54,11 +54,11 @@ const login = () => {
                 onChange={(e) => {
                   setpassword(e.target.value);
                 }}
-                className="px-3 py-2 rounded-sm w-72 border-black-2 my-4 shadow-sm outline-none"
-                placeholder="Enter your password"
+                className="px-3 py-2 rounded-lg h-9 w-96 mb-2 outline-black focus:ring-1 ring-success2 bg-background border border-accent2 font-normal text-foreground"
+                placeholder="Password"
               />
               <button
-                className="border-black-100 bg-blue-500 px-3 py-1 mt-3 rounded-md text-xl text-white w-72"
+                className="border-black-100 leading-none bg-[#1EA1F1] h-9 mt-2 rounded-lg text-xl text-white w-96 font-medium"
                 onClick={signin}
               >
                 Sign in
