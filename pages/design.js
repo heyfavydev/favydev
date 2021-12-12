@@ -7,15 +7,15 @@ const design = () => {
 
   
   return (
-    <div className="flex items-center justify-center min-h-screen py-2">
+    <div className="flex items-center justify-center min-h-screen text-foreground">
       <Head>
-        <title>Favlent - Dashboard</title>
+        <title>Deisgn</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to <a className="text-blue-500">Design Page!</a>
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold">
+          Welcome to <a className="text-success2">Design</a>
         </h1>
       </main>
     </div>

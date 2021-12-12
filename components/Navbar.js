@@ -13,23 +13,24 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between h-11 bg-white items-center shadow-md">
+    <div className="border-b w-full border-accent2">
+    <div className="flex justify-between items-center h-10 max-w-5xl m-auto">
       {/* Navigation Menu  */}
-      <div className="flex items-center">
-        <h1 className="text-gray-700 text-xl ml-5 antialiased font-semibold mb-1">
-          <Link href="/"> Favy </Link>
+      <div className="flex items-center ml-3 my-auto">
+        <h1 className="text-foreground text-lg antialiased font-semibold">
+          <Link href="/">Favy</Link>
         </h1>
         {!auth.currentUser ? (
           ""
         ) : (
-          <ul className="flex ml-3 text-base text-gray-500 antialiased font-medium">
-            <li className="my-2 p-2 hover:text-gray-900 transition ease duration-300">
+          <ul className="flex ml-8 text-accent5 antialiased font-medium m-auto gap-3">
+            <li className="hover:text-foreground transition ease duration-100 cursor-pointer text-base">
               <Link href="/dashboard">Dashboard</Link>
             </li>
-            <li className="my-2 p-2 hover:text-gray-900 transition ease duration-300">
+            <li className="hover:text-foreground transition ease duration-100 cursor-pointer text-base">
               <Link href="/blogs">Blogs</Link>
             </li>
-            <li className="my-2 p-2 hover:text-gray-900 transition ease duration-300">
+            <li className="hover:text-foreground transition ease duration-100 cursor-pointer text-base">
               <Link href="/design">Design</Link>
             </li>
           </ul>
@@ -37,29 +38,30 @@ const Navbar = () => {
       </div>
 
       {/* Sign in Sign up buttons */}
-      <div className="flex">
+      <div className="flex mr-3 my-auto">
         {!auth.currentUser ? (
           <>
             <Link href="/login">
-              <button className="p-3 font-semibold text-gray-500 hover:text-gray-900 transition ease duration-200 cursor-pointer text-xl">
+              <button className="mr-3 font-normal text-accent5 hover:text-foreground transition ease duration-100 cursor-pointer text-base">
                 Sign in
               </button>
             </Link>
             <Link href="/register">
-              <button className="p-3 font-semibold text-gray-500 hover:text-gray-900 transition ease duration-200 cursor-pointer text-xl">
+              <button className="font-normal text-accent5 hover:text-foreground transition ease duration-100 cursor-pointer text-base">
                 Register
               </button>
             </Link>
           </>
         ) : (
           <button
-            className="p-3 font-semibold text-gray-500 hover:text-gray-900 transition ease duration-200 cursor-pointer text-xl"
+            className="font-normal text-accent5 hover:text-foreground transition ease duration-100 cursor-pointer text-base"
             onClick={usersignOut}
           >
             Sign out
           </button>
         )}
       </div>
+    </div>
     </div>
   );
 };

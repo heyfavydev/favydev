@@ -1,7 +1,7 @@
-import "tailwindcss/tailwind.css";
 import Navbar from "../components/Navbar";
 import { StateProvider } from "../components/stateProvider";
 import { initialState, reducer } from "../components/reducer";
+import "../styles/global.css";
 
 function App({ Component, pageProps }) {
   return (
