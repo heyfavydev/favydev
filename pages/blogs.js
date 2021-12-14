@@ -1,12 +1,13 @@
 import React,{useEffect} from "react";
 import Head from "next/head";
-import jsCookie from "js-cookie";
 import Router from "next/router";
+import { getUserInfo } from "../firebase/setUserMethods";
 
 
 const blogs = () => {
   useEffect(() => {
-    if (jsCookie.get('token') === "" ) {
+    const isUser = getUserInfo()
+    if (!isUser) {
       Router.push("/")
     }
   })

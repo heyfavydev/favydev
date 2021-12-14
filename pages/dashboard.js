@@ -1,12 +1,13 @@
 import React ,{useEffect} from "react";
 import Head from "next/head";
-import jsCookie from "js-cookie";
-
+import { getUserInfo } from "../firebase/setUserMethods";
+import Router from "next/router";
 
 const dashboard = () => {
 
   useEffect(() => {
-    if (jsCookie.get('token') === "" ) {
+    const isUser = getUserInfo()
+    if (!isUser) {
       Router.push("/")
     }
   })

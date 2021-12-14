@@ -2,6 +2,8 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getStorage , doc } from "firebase/storage";
+
 
 const clientCredentials = {
   apiKey: "AIzaSyC0sFxTli2eQpwPMDiuoohKhNi8eXzRZEg",
@@ -13,12 +15,17 @@ const clientCredentials = {
 };
 // Initialize Firebase
 
-// if (!getApps().length) {
-// }
-const firebase = initializeApp(clientCredentials);
+const firebaseApp = initializeApp(clientCredentials);
 const db = getFirestore(firebase);
 const auth = getAuth(firebase);
+const storage = getStorage(firebase)
+const firebase = getApps(clientCredentials)
+const fireStore = getFirestore()
 
 
 
-export { firebase , db , auth };
+// if (!firebase.length) {
+  
+// }
+
+export { firebaseApp , db , auth , fireStore };
