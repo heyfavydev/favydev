@@ -1,16 +1,15 @@
-import React ,{useEffect} from "react";
+import React  from "react";
 import Head from "next/head";
-import { getUserInfo } from "../firebase/setUserMethods";
 import Router from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase/clientApp";
 
 const dashboard = () => {
 
-  useEffect(() => {
-    const isUser = getUserInfo()
-    if (!isUser) {
-      Router.push("/")
-    }
-  })
+  const [user] = useAuthState(auth)
+  if (!user) {
+    Router.push("/login")
+  }
   return (
     <div className="flex items-center justify-center min-h-screen text-foreground">
       <Head>

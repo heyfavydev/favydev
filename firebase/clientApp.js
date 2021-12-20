@@ -2,30 +2,22 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { getStorage , doc } from "firebase/storage";
+// import { getStorage , doc } from "firebase/storage";
 
 
-const clientCredentials = {
-  apiKey: "AIzaSyC0sFxTli2eQpwPMDiuoohKhNi8eXzRZEg",
-  authDomain: "favydev-93dc3.firebaseapp.com",
-  projectId: "favydev-93dc3",
-  storageBucket: "favydev-93dc3.appspot.com",
-  messagingSenderId: "422419216535",
-  appId: "1:422419216535:web:2576056fe03f89104c51d2",
-};
 // Initialize Firebase
+const clientCredentials = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain:process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId:process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
 
 const firebaseApp = initializeApp(clientCredentials);
-const db = getFirestore(firebase);
-const auth = getAuth(firebase);
-const storage = getStorage(firebase)
-const firebase = getApps(clientCredentials)
-const fireStore = getFirestore()
+const auth = getAuth(firebaseApp);
 
+const db = getFirestore()
 
-
-// if (!firebase.length) {
-  
-// }
-
-export { firebaseApp , db , auth , fireStore };
+export { firebaseApp , auth , db };

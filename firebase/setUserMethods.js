@@ -1,4 +1,5 @@
 import jsCookie from "js-cookie";
+import Router from "next/router";
 
 // function for return user data from cookies
 export const getUserInfo = () => {
@@ -21,3 +22,32 @@ export const setUserCookie = (user) => {
 export const removeUserCookie = () => {
   jsCookie.remove("user");
 };
+
+
+// set user Tamplet 
+export const setUserTamplet = () => {
+
+  const user = getUserInfo()
+
+  if (user.userTamplet === false) {
+    const updateData = {
+      id: user.id,
+      Name:user.Name,
+      email:user.email,
+      phoneNumber:user.phoneNumber,
+      photoURL: user.photoURL,
+      userTamplet:true
+    }
+    jsCookie.set("user", JSON.stringify(updateData))
+} else {
+    const updateData = {
+      id: user.id,
+      Name:user.Name,
+      email:user.email,
+      phoneNumber:user.phoneNumber,
+      photoURL: user.photoURL,
+      userTamplet:false
+    }
+    jsCookie.set("user", JSON.stringify(updateData))
+  }
+} 
