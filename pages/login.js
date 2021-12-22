@@ -3,8 +3,7 @@ import Head from "next/head";
 import { auth } from "../firebase/clientApp";
 import Router from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { mapUserData } from "../firebase/mapUserData";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import LodingScreen from "../components/LodingScreen";
 
 const login = () => {
@@ -19,7 +18,14 @@ const login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      window.alert(error);
+      
+      if (error.code === "auth/wrong-password") {
+        window.alert("Wrong Password");
+      } else if (error.code === "auth/user-not-found") {
+        window.alert("User Not Found");
+      } else {
+        window.alert("Invalid Email");
+      }
     }
     Router.push("/");
     setLoding(false)
