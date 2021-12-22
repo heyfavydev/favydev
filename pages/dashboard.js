@@ -9,10 +9,7 @@ import userCheck from "../Utils/userCheck";
 const dashboard = () => {
   const [user , loding] = useAuthState(auth)
   
-  useEffect(() => {
-    if (loding) {
-      return <LodingScreen />
-    }
+  useEffect(() => { 
     userCheck(user);
   }, [])
   return (

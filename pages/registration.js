@@ -48,7 +48,7 @@ const registration = () => {
       console.log(error.message);
       if (error.code === "auth/email-already-in-use") {
         window.alert("Email already registered");
-      } else if ((error.code = "auth/weak-password")) {
+      } else if ((error.code === "auth/weak-password")) {
         window.alert("Weak Password: Password should be at least 6 characters");
       }
       signOut(auth);
@@ -72,7 +72,7 @@ const registration = () => {
 
       Router.push("/");
     } catch (error) {
-      window.alert("Sign up failed");
+      window.alert(error);
       signOut(auth);
       Router.push("/registration");
     }

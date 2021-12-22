@@ -8,10 +8,9 @@ import LodingScreen from "../components/LodingScreen";
 
 const blogs = () => {
   const [user] = useAuthState(auth);
-  const [isLoding, setisLoding] = useState(false);
+  const [isLoding, setisLoding] = useState(true);
 
   useEffect(() => {
-    setisLoding(true);
     userCheck(user);
     setisLoding(false);
   }, []);

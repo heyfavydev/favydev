@@ -19,7 +19,7 @@ const login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      window.alert("Login Failed, Check your login details");
+      window.alert(error);
     }
     Router.push("/");
     setLoding(false)

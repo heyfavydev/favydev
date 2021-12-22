@@ -16,6 +16,7 @@ const design = () => {
   useEffect(async () => {
     // checking user session 
     userCheck(user);
+    
     if (user) {
       setLoding(true);
       // check for user tamplet
