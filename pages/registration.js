@@ -72,7 +72,7 @@ const registration = () => {
 
       Router.push("/");
     } catch (error) {
-      window.alert(error.code);
+      window.alert(error);
       signOut(auth);
       Router.push("/registration");
     }
