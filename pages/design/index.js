@@ -21,11 +21,6 @@ const design = () => {
       setLoding(true);
       // check for user tamplet
       const userData = await getDoc(doc(db, "FavyUserDetails", user.uid));
-
-   
-      if (!userData.get("userTamplet")) {
-        Router.push("/design/choose_tamplet")
-      }
       // setting tamplet for this component
       setTamplet(userData.get("userTamplet"));
       setLoding(false);
