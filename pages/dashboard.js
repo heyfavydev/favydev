@@ -1,15 +1,20 @@
-import React  from "react";
+import React,{useEffect}  from "react";
 import Head from "next/head";
 import Router from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/clientApp";
+import LodingScreen from "../components/LodingScreen"
+import userCheck from "../Utils/userCheck";
 
 const dashboard = () => {
-
-  const [user] = useAuthState(auth)
-  if (!user) {
-    Router.push("/login")
-  }
+  const [user , loding] = useAuthState(auth)
+  
+  useEffect(() => {
+    if (loding) {
+      return <LodingScreen />
+    }
+    userCheck(user);
+  }, [])
   return (
     <div className="flex items-center justify-center min-h-screen text-foreground">
       <Head>
@@ -25,5 +30,9 @@ const dashboard = () => {
     </div>
   );
 };
+
+
+
+
 
 export default dashboard;
